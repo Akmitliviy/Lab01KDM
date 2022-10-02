@@ -4,131 +4,146 @@
     {
         public static void FourthTask()
         {
-            int[] Aarr = new int[6] { 1, 3, 4, 5, 7, 9 };
-            int[] Barr = new int[7] { 4, 5, 6, 7, 8, 9, 10 };
-            int[] Carr = new int[5] { 2, 4, 6, 8, 10 };
-            int[] Uarr = new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            List<int> A = new List<int>();
-            List<int> B = new List<int>();
-            List<int> C = new List<int>();
-            List<int> U = new List<int>();
-
-            foreach(int i in Aarr)
-                A.Add(i);
-            foreach (int i in Barr)
-                B.Add(i);
-            foreach (int i in Carr)
-                C.Add(i);
-            foreach (int i in Uarr)
-                U.Add(i);
-
-            List<int> first = First(A, B, C, U);
-            List<int> second = Second(A, B, C, U);
-            List<int> third = Third(A, B, C, U);
+            int[] Aarr = new int[10] { 1, 0, 1, 1, 1, 0, 1, 0, 1, 0 };
+            int[] Barr = new int[10] { 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 };
+            int[] Carr = new int[10] { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 };
+            int[] Uarr = new int[10] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
 
-            Console.Write("\nFirst: ");
-            foreach (int i in first)
-                Console.Write(i + ", ");
-
-            Console.Write("\nSecond: ");
-            foreach (int i in second)
-                Console.Write(i + ", ");
-
-            Console.Write("\nThird: ");
-            foreach(int i in third)
-                Console.Write(i + ", ");
-
-            Console.WriteLine();
-        }
-
-        static List<int> First( List<int> A, List<int> B, List<int> C, List<int> U)
-        {
-            List<int> notB = new List<int>();
-            List<int> first = new List<int>();
-
-            foreach(int i in U)
-            { 
-                if (!B.Contains(i))
-                    notB.Add(i);
-            }
-
-            foreach(int i in A)
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("\nElements of first set:  ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            for (int i = 0; i < 10; i++)
             {
-                if (notB.Contains(i))
-                    first.Add(i);
-            }
-
-            foreach(int i in C)
-            {
-                if (first.Contains(i))
+                if (GetFirst(Aarr, Barr, Carr, Uarr)[i] == 1)
                 {
-                    first.Remove(i);
-                    C.Remove(i);
+                    Console.Write(++i + ", ");
+                    --i;
                 }
             }
 
-            foreach (int i in C)
-                first.Add(i);
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("\nElements of second set: ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            for (int i = 0; i < 10; i++)
+            {
+                if (GetSecond(Aarr, Barr, Carr, Uarr)[i] == 1)
+                {
+                    Console.Write(++i + ", ");
+                    --i;
+                }
+            }
 
-            first.Sort();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("\nElements of third set:  ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            for (int i = 0; i < 10; i++)
+            {
+                if (GetThird(Aarr, Barr, Carr, Uarr)[i] == 1)
+                {
+                    Console.Write(++i + ", ");
+                    --i;
+                }
+            }
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("\n");
+        }
+        static int[] GetFirst(int[] a, int[] b, int[] c, int[] u)
+        {
+            int[] notB = new int[10];
+            int[] aAndNotB = new int[10];
+            int[] first = new int[10];
+
+            for (int i = 0; i < 10; i++)
+            {
+                if(b[i] == 0)
+                    notB[i] = 1;
+                else
+                    notB[i] = 0;
+            }
+
+            for(int i = 0; i < 10; i++)
+            {
+                if(a[i] == 1 && notB[i] == 1)
+                    aAndNotB[i] = 1;
+                else
+                    aAndNotB[i] = 0;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                if ((aAndNotB[i] == 1 && c[i] == 1) || (aAndNotB[i] == 0 && c[i] == 0))
+                    first[i] = 0;
+                else
+                    first[i] = 1;
+            }
 
             return first;
         }
-
-        static List<int> Second(List<int> A, List<int> B, List<int> C, List<int> U)
+        static int[] GetSecond(int[] a, int[] b, int[] c, int[] u)
         {
-            List<int> notA = new List<int>();
-            List<int> B_Without_notA = new List<int>();
-            List<int> second = new List<int>();
+            int[] notA = new int[10];
+            int[] b_Without_NotA = new int[10];
+            int[] leftOrRight = new int[10];
+            int[] second = new int[10];
 
-            foreach(int i in U)
+            for (int i = 0; i < 10; i++)
             {
-                if(!A.Contains(i))
-                    notA.Add(i);
+                if (a[i] == 1)
+                    notA[i] = 0;
+                else
+                    notA[i] = 1;
             }
 
-            foreach(int i in B)
+            for (int i = 0; i < 10; i++)
             {
-                if (!notA.Contains(i))
-                    B_Without_notA.Add(i);
+                if (b[i] == 1 && notA[i] == 0)
+                    b_Without_NotA[i] = 1;
+                else
+                    b_Without_NotA[i] = 0;
             }
 
-            foreach(int i in C)
+            for(int i = 0; i < 10; i++)
             {
-                if(!B_Without_notA.Contains(i))
-                    B_Without_notA.Add(i);
+                if (b_Without_NotA[i] == 1 || c[i] == 1)
+                    leftOrRight[i] = 1;
+                else
+                    leftOrRight[i] = 0;
             }
 
-            foreach(int i in U)
+            for (int i = 0; i < 10; i++)
             {
-                if(!B_Without_notA.Contains(i))
-                    second.Add(i);
+                if (leftOrRight[i] == 1)
+                    second[i] = 0;
+                else
+                    second[i] = 1;
             }
-
-            second.Sort();
 
             return second;
         }
-        static List<int> Third(List<int> A, List<int> B, List<int> C, List<int> U)
+        static int[] GetThird(int[] a, int[] b, int[] c, int[] u)
         {
-            List<int> third = A;
+            int[] a_And_C = new int[10];
+            int[] third = new int[10];
 
-            foreach (int i in C)
+            for (int i = 0; i < 10; i++)
             {
-                if (!A.Contains(i))
-                    third.Add(i);
+                if (a[i] == 1 || c[i] == 1)
+                    a_And_C[i] = 1;
+                else
+                    a_And_C[i] = 0;
             }
 
-            foreach(int i in B)
+            for (int i = 0; i < 10; i++)
             {
-                if (third.Contains(i))
-                    third.Remove(i);
+                if (a_And_C[i] == 1 && b[i] == 0)
+                    third[i] = 1;
+                else
+                    third[i] = 0;
             }
-
-            third.Sort();
 
             return third;
         }
+
     }
 }

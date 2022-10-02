@@ -35,9 +35,9 @@
                 }
 
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Press \"S\" to stop process, or anything else to continue: ");
-                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write("Press \"S\" to stop process, or anything else to continue: ");
                 string goNext = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Gray;
 
                 if (goNext.ToLower() == "s" || goNext.ToLower() == "stop")
                     break;
@@ -48,7 +48,7 @@
             int taskNumber;
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Please, Enter the number of task, you want to check: ");
+            Console.Write("Please, Enter the number of task, you want to check: ");
             Console.ForegroundColor = ConsoleColor.Gray;
             try
             {

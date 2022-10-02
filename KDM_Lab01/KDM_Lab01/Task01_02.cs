@@ -3,14 +3,15 @@
      static class Task01_02
     {
 
-        static bool p;
-        static bool q;
-        static bool r;
+        static bool p, q, r;
 
         public static void FirstTask()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\n P \t  Q \t  R \t Result");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine(new string('-', 32));
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("\n P \t Q \t R \t Result");
 
             bool result;
             for (int i = 0; i < 2; i++)
@@ -25,16 +26,20 @@
 
                         result = p && q && !r && (!p || !q || r);
 
-                        Console.WriteLine(p.ToString() + "\t" + q.ToString() + "\t" + r.ToString() + "\t" + result);
+                        Console.WriteLine(p.ToString() + "\t" + q.ToString() + "\t" + r.ToString() + "\t " + result);
                     }
                 }
             }
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine();
         }
         public static void SecondTask()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\n P \t  Q \t  R \t Result");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine(new string('-', 32));
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("\n P \t Q \t R \t Result");
 
             bool result;
             for (int i = 0; i < 2; i++)
@@ -49,12 +54,12 @@
 
                         result = ((!p || q) && (!q || p) && !r) || (p && !q) || !p || r;
 
-                        Console.WriteLine(p.ToString() + "\t" + q.ToString() + "\t" + r.ToString() + "\t" + result);
+                        Console.WriteLine(p.ToString() + "\t" + q.ToString() + "\t" + r.ToString() + "\t " + result);
                     }
                 }
             }
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine();
         }
-     }
-
+    }
 }

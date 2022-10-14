@@ -40,14 +40,10 @@
 
         static bool PredicateQ(string x, string y)
         {
-            if ((x.ToLower() == "a" && y.ToLower() == "a") || (x.ToLower() == "b" && y.ToLower() == "b"))
-            {
+            if ((x == "a" && y == "a") || (x == "b" && y == "b"))
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
     }

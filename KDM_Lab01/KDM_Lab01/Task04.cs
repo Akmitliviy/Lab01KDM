@@ -1,6 +1,4 @@
-﻿using System.Formats.Asn1;
-
-namespace KDM_Lab01
+﻿namespace KDM_Lab01
 {
     static class Task04
     {

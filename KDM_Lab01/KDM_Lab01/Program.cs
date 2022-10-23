@@ -4,12 +4,16 @@
     {
         public static void Main()
         {
+            bool isStopped = false;
             while(true)
             {
                 Program program = new Program();
 
                 switch (program.Hello())
                 {
+                    case 0:
+                        isStopped = true;
+                        break;
                     case 1:
                         Task01_02.FirstTask();
                         break;
@@ -29,36 +33,39 @@
                     default:
 
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("\nSorry, but we don't have this task. Please, try again.");
+                        Console.WriteLine("\nSorry, but we don't have this task. Please, try again.\n");
                         Console.ForegroundColor = ConsoleColor.Gray;
                         break;
                 }
 
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.Write("Press \"S\" to stop process, or anything else to continue: ");
-                string goNext = Console.ReadLine();
-                Console.ForegroundColor = ConsoleColor.Gray;
-
-                if (goNext.ToLower() == "s" || goNext.ToLower() == "stop")
+                if (isStopped)
                     break;
             }
         }
         int Hello()
         {
-            int taskNumber;
+            int taskNumber = -1;
+            string s = "-1";
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("Please, Enter the number of task, you want to check: ");
+            Console.Write("Please, Enter the number of task, you want to check or press \"S\" to stop process: ");
+            s = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.Gray;
-            try
+
+            if (s == "s" || s == "S" || s == "Stop")
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                taskNumber = Convert.ToInt32(Console.ReadLine());
-                Console.ForegroundColor = ConsoleColor.Gray;
+                taskNumber = 0;
             }
-            catch (FormatException)
+            else
             {
-                return -1;
+                try
+                {
+                    taskNumber = Convert.ToInt32(s);
+                }
+                catch (FormatException)
+                {
+
+                }
             }
 
             return taskNumber;

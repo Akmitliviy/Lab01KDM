@@ -13,7 +13,33 @@
                 text = b - e - f + x;
                 graphic = c - e - g + x;
                 symbbols = d - f - g + x;
-                Console.WriteLine("Text procesors: {0}\nGraphic procesors: {1}\nSymbols procesors: {2}, x = {3}", text, graphic, symbbols, x);
+
+                if(text >= 0 && graphic >= 0 && symbbols >= 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write("\nText procesors: ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write(text);
+
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write("\nGraphic procesors: ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write(graphic);
+
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write("\nSymbols procesors: ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write(symbbols);
+
+                    Console.WriteLine("\n");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("This is Impossible!");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
             }
             else
             {

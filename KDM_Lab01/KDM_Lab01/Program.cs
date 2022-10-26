@@ -5,7 +5,8 @@
         public static void Main()
         {
             bool isStopped = false;
-            while(true)
+
+            while (!isStopped)
             {
                 Program program = new Program();
 
@@ -15,10 +16,10 @@
                         isStopped = true;
                         break;
                     case 1:
-                        Task01_02.FirstTask();
+                        Task01.FirstTask();
                         break;
-                    case 2: 
-                        Task01_02.SecondTask();
+                    case 2:
+                        Task02.SecondTask();
                         break;
                     case 3:
                         Task03.ThirdTask();
@@ -37,9 +38,6 @@
                         Console.ForegroundColor = ConsoleColor.Gray;
                         break;
                 }
-
-                if (isStopped)
-                    break;
             }
         }
         int Hello()

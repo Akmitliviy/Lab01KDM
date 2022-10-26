@@ -174,6 +174,12 @@
             for (int i = 0; i < l; i++)
                 boo[firstL - 1][i] = values[i];
 
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("\nPower of third set is equal ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write(firstL + "\n");
+            Console.ForegroundColor = ConsoleColor.Gray;
+
             Console.WriteLine();
             foreach (int?[] i in boo)
             {

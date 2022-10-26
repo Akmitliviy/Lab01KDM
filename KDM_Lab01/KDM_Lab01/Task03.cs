@@ -28,7 +28,9 @@
                 }
             }
 
-            Console.WriteLine("Formula is {0}\n", isTrue.ToString());
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\nUniversal quantifier for formula \"Q(y, y)\" is {0}\n", isTrue.ToString());
+            Console.ForegroundColor = ConsoleColor.Gray;
 
         }
 
